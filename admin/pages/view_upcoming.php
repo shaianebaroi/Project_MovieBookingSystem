@@ -1,0 +1,80 @@
+<?php
+include('header.php');
+require_once('../../config.php');
+?>
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Movies List
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="index"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Movies List</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box --> 
+      <div class="box">
+        <div class="box-body">
+            <div class="box box-primary">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <?php include('../../msgbox.php');?>
+              <ul class="todo-list">
+                 <?php 
+                        $qry=mysqli_query($con,"select * from movies where status = 1");
+                        if(mysqli_num_rows($qry))
+                        {
+                        while($c=mysqli_fetch_array($qry))
+                        {
+                        ?>
+                <li>
+                  <!-- drag handle -->
+                      <span class="handle">
+                        <i class="fa fa-film"></i>
+                        
+                      </span>
+                  <!-- checkbox -->
+                  <!-- todo text -->
+                  <span class="text"><?php echo $c['movie_name'];?></span>
+                  <!-- Emphasis label -->
+                  
+                  <!-- General tools such as edit or delete-->
+                  <div class="tools">
+                    
+                    <button class="fa-solid fa-pen" onclick="change(<?php echo $c['movie_id'];?>)"></button>
+                  </div>
+                </li>
+                  <?php
+                       }}
+                     ?>
+                      
+            </div>
+          </div>
+        </div> 
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <?php
+include('footer.php');
+?>
+<script>
+function change(m)
+    {
+        if (confirm("Do you want to change the status for this movie?") == true) 
+        {
+            window.location="change_running.php?mid="+m;
+        } 
+    }
+    </script>

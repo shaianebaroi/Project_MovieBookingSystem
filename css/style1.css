@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+
+html * {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.content {
+  background: #fff;
+  /* padding: 20px 0; */
+}
+/*  GRID OF THREE   ============================================================================= */
+.now_showing {
+  display: block;
+/*   float: left; */
+  margin-bottom: 1%;
+}
+.content h2{
+  color: #fcac03;
+  margin-bottom: 1%;
+  margin-left: 1.5%;
+}
+
+.upcoming{
+	background: url(../images/hd-bg.png);
+	padding-bottom: 1.5%;
+}
+
+.data {
+  margin-bottom: 1px;
+  text-align: center;
+}
+
+.break{
+	height: 50px;
+}
